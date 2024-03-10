@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
  
 export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
-    const isPublished = path ==='/signup'  || path === '/login'
+    const isPublished = path ==='/signup'  || path === '/login' || path ==='/verifyemail'
     const token  =  request.cookies.get('token')?.value || ""
     if(isPublished && token){
         return NextResponse.redirect(new URL('/',request.nextUrl))
@@ -19,6 +19,7 @@ export const config = {
     '/',
     '/login',
     '/signup',
-    '/profile'
+    '/profile',
+    '/verifyemail'
   ]
 }
